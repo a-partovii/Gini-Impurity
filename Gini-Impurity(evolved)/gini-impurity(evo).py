@@ -98,6 +98,7 @@ def calculate_gini(df, label_col, target):
     print(colored("-" * 55, "green")) #  Graphical separator line in the terminal
     return gini_result
 
+
 def main():
     # Insert your file path here
     file_path = "/Your/file/path/here/example-table1.xlsx"
