@@ -1,0 +1,11 @@
+weather;temperature;humidity;wind;hiking
+cloudy;cool;normal;weak;no
+sunny;hot;high;weak;yes
+rainy;mild;normal;strong;yes
+cloudy;mild;high;strong;no
+sunny;mild;high;strong;no
+rainy;cool;normal;strong;no
+cloudy;mild;high;weak;yes
+sunny;hot;high;strong;no
+rainy;cool;normal;weak;no
+sunny;hot;high;strong;no
