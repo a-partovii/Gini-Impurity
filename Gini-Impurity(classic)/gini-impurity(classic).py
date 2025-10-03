@@ -1,4 +1,4 @@
-'''This script calculates the Gini Impurity for each feature in an Excel file.
+'''This script calculates the Gini Impurity for each feature in an Excel or CSV file.
 
 A lower Gini Impurity score, indicates that the feature better separates the data 
 with respect to the target value. The smaller the result, the greater the 
@@ -9,16 +9,21 @@ Attention: The last column of the file must contain the values 'yes' or 'no' as 
 import pandas as pd
 # I used ANSI codes for colored messages
 
-def get_excelf(file_path):
-    """Reads the Excel file and returns the DataFrame, otherwise returns None."""
+def get_valid_file(file_path):
+    """Reads the Excel or CSV file and returns the DataFrame, otherwise returns None."""
     try:
-        df = pd.read_excel(file_path)
+        if file_path.endswith(('.xlsx', '.xls')):
+            df = pd.read_excel(file_path)
+        elif file_path.endswith('.csv'):
+            df = pd.read_csv(file_path, sep=";") # Default csv separator is ";"
+
         if df.empty or df.shape[1] < 2:
-            print("It looks the Excel file is empty, Please check it and try again.")
+            print("It looks the dataset file is empty, Please check it and try again.")
             return None
         return df
-    except Exception as e:
-        print(f"Error while reading the Excel file: {e}")
+
+    except Exception as error:
+        print(f"Error while reading the file: {error}")
         return None
 
 def calculate_gini(df):
@@ -47,13 +52,13 @@ def calculate_gini(df):
 
         gini_result[feature] = sum(impurity_values) / len(impurity_values)
 
-    print("\033[0;32m""-" * 55 + "\033[0m") #  Graphical separator line in the terminal
+    print("\033[0;32m""-" * 55 + "\033[0m") # Graphical separator line in the terminal
     return gini_result
 
 def main():
     # Insert your file path here
-    file_path = "/Your/Excel/file/path/here/example-table1.xlsx"
-    df = get_excelf(file_path)
+    file_path = "/Your/file/path/here/example-table1.xlsx"
+    df = get_valid_file(file_path)
 
     if df is None:
         return

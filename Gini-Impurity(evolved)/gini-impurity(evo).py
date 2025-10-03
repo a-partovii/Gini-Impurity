@@ -11,16 +11,21 @@ Interactively prompts the user to specify the label column and target value."""
 import pandas as pd
 from termcolor import colored
 
-def get_excelf(file_path):
-    """Reads the Excel file and returns the DataFrame, otherwise returns None."""
+def get_valid_file(file_path):
+    """Reads the Excel or CSV file and returns the DataFrame, otherwise returns None."""
     try:
-        df = pd.read_excel(file_path)
-        if df.shape[1] < 2:
-            print("It looks like the Excel file is empty. Please check it and try again.")
+        if file_path.endswith(('.xlsx', '.xls')):
+            df = pd.read_excel(file_path)
+        elif file_path.endswith('.csv'):
+            df = pd.read_csv(file_path, sep=";") # Default csv separator is ";"
+
+        if df.empty or df.shape[1] < 2:
+            print("It looks the dataset file is empty, Please check it and try again.")
             return None
         return df
-    except Exception as e:
-        print(f"Error reading the Excel file: {e}")
+
+    except Exception as error:
+        print(f"Error while reading the file: {error}")
         return None
 
 def get_target_input(df):
@@ -37,7 +42,7 @@ def get_target_input(df):
     while True:
         target = input("Enter your target value: ")
         if target not in df[label_col].astype(str).unique(): # "unique()" removes duplicated values(from pandas lib)
-            print(colored("-" * 55, "light_green"))
+            print(colored("-" * 55, "green"))
             print("There is no item with this name in that column. Available values are:")
             values = df[label_col].unique()
             print(colored(f"{label_col}: {list(values)}", "cyan"))
@@ -95,8 +100,8 @@ def calculate_gini(df, label_col, target):
 
 def main():
     # Insert your file path here
-    file_path = "/Your/Excel/file/path/here/example-table1.xlsx"
-    df = get_excelf(file_path)
+    file_path = "/Your/file/path/here/example-table1.xlsx"
+    df = get_valid_file(file_path)
 
     if df is None:
         return
