@@ -1,17 +1,19 @@
 ## Gini Impurity Calculation
 
-This project provides implementations for calculating Gini Impurity. The scripts compute the Gini Impurity for each feature column and its values in a given Excel dataset. Ideal for feature selection and data analysis workflows.
+This project provides implementations for calculating Gini Impurity. The scripts compute the Gini Impurity for each feature column and its values in a given relational dataset. Ideal for feature selection and data analysis workflows.
 
 It includes two versions:
 - **(Classic)**: Calculates Gini Impurity using the last column as the label, supporting only 'yes' or 'no' labels.
 - **(Evolved)**: Can work with any feature and its values as the label column and label, relative to a user-specified target.
 
-It is part of a practice project assigned by a university professor, designed to help students learn basic data analysis concepts.
+<p align="center">
+<img src="https://github.com/user-attachments/assets/152292df-1459-4431-a793-4f778b26af2d" alt="Gini Preview" width="750">
+</p>
 
 ### Attentions
-1. Place the file path into the `file_path` variable inside the script. 
-2. In the classic version the last column of the dataset must contain the target labels (`yes` or `no`). 
-3. Make sure the dataset is an Excel file(`.xlsx` or `.xls`) and properly formatted.
+1. Place the dataset file path into the `file_path` variable inside the script. 
+2. In the classic version the last column of the dataset must contain the ('yes' or 'no') values as labels. 
+3. Make sure the dataset is an Excel or CSV file(`.xlsx`, `.xls`, `.csv`) and properly formatted.
  
 
 ### Requirements
@@ -21,6 +23,7 @@ It is part of a practice project assigned by a university professor, designed to
 ### Documentation
 All details, including the explanation of the code and its output, are available in the `gini-impurity.pdf` file provided with this project.
 
+It is part of a practice project assigned by a university professor, designed to help students learn basic data analysis concepts.
 **This is a simple exercise and not intended for production use.**
 
 
