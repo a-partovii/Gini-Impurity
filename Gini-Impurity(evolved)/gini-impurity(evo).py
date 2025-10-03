@@ -119,6 +119,5 @@ def main():
             else:
                 print(f"Feature '{feature}': Gini Impurity = {gini:.4f}")
     input(">>>")
-
-while True:
-    main()
+    
+main()

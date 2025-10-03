@@ -1,6 +1,6 @@
 ## Gini Impurity Calculation
 
-This project provides a simple implementation to calculate Gini Impurity. The script calculates the Gini Impurity for each feature column and its values in a given dataset.
+This project provides implementations for calculating Gini Impurity. The scripts compute the Gini Impurity for each feature column and its values in a given Excel dataset. Ideal for feature selection and data analysis workflows.
 
 It includes two versions:
 - **(Classic)**: Calculates Gini Impurity using the last column as the label, supporting only 'yes' or 'no' labels.
